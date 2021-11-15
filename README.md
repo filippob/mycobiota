@@ -13,4 +13,5 @@
 
 - activate the conda env: `conda activate mycobiota`
 - 
+- cutadapt (WARNING: The script cutadapt is installed in '/home/biscarinif/.local/bin' which is not on PATH. Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.)
 
