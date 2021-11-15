@@ -11,6 +11,6 @@
 
 ### Steps
 
-- activate the conda env: conda activate mycobiota
+- activate the conda env: `conda activate mycobiota`
 - 
 
