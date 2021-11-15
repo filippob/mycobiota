@@ -1,8 +1,6 @@
-###############################################
 ## software and steps to analyse mycobiota data
-###############################################
 
-## Software
+### Software
 
 - fastqc
 - multiqc: to combine multiple fastq files (Python code: pip install multiqc)
