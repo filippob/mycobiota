@@ -9,3 +9,8 @@
 - micca: for i) paired-end reads joining; ii) N-filtering; iii) OTU-picking; iv) assignment of taxonomies; v) phylogenetic tree [Python code: install through docker --> docker pull compmetagen/micca]
 - rdp: micca dependency (probably preinstalled in the docker image)
 
+### Steps
+
+- activate the conda env: conda activate mycobiota
+- 
+
