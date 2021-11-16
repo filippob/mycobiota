@@ -16,8 +16,8 @@
 - rename and count reads (`2.rename_and_count.sh`)
 - cutadapt (WARNING: The script cutadapt is installed in '/home/biscarinif/.local/bin' which is not on PATH. Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.) (`3.remove_adapters.sh`)
 - trim reads (`4.trimming.sh`)
-- joining
-- filtering (removing N's)
-- OTU picking (binning quasi-identical bins)
-- 
+- joining paired-end reads (`5.join_reads.sh`)
+- filtering (removing N's) (`6.filter.sh`)
+- OTU picking (binning quasi-identical bins) (`7.otu_picking.sh`)
+- RDP classifier (assign OTUs to taxonomical classification) (`8.classify_rdp.sh`)
 
