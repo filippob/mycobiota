@@ -20,3 +20,4 @@ do
 	$sickle_exe pe -f "${file}_R1_cutadapt.fastq.gz" -r "${file}_R2_cutadapt.fastq.gz" -o $currpath/Analysis/trimmed/"${file}_trimmed_R1.fastq.gz" -p $currpath/Analysis/trimmed/"${file}_trimmed_R2.fastq.gz" -s $currpath/Analysis/trimmed/"${file}_singles.gz" -t sanger -q 20 -g 1>> $currpath/Analysis/quality_control/stats_trim.txt
 done < names_single.txt
 
+echo "DONE!!"

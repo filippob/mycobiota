@@ -59,7 +59,7 @@ done < names_single.txt
 while read file
 do
 	echo "Running cutadapt on R2 of file "${file}""
-	cutadapt -g Reverse=GCTGCGTTCTTCATCGATGC -a RCforward=TTACTTCCTCTAAATGACCAAG -o $currpath/Analysis/cutadapt/"${file}_R2_cutadapt.fastq.gz" "${file}_R2.fastq.gz" 1>> $currpath/Analysis/quality_control/report_cutadapt_primer_R2.txt
+	cutadapt -g Reverse=TCCTCCGCTTATTGATATGC -a RCforward=GCATATCAATAAGCGGAGGA -o $currpath/Analysis/cutadapt/"${file}_R2_cutadapt.fastq.gz" "${file}_R2.fastq.gz" 1>> $currpath/Analysis/quality_control/report_cutadapt_primer_R2.txt
 done < names_single.txt
 
 echo "DONE!!"
