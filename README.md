@@ -1,5 +1,7 @@
 ## software and steps to analyse mycobiota data
 
+We are referring here to paired-end reads from ITS sequencing
+
 ### Software
 
 - fastqc
