@@ -3,3 +3,4 @@ Analysis/*
 
 ##
 *.pdf
+.Rproj.user
