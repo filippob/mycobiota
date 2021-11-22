@@ -2,5 +2,8 @@
 Analysis/*
 
 ##
-*.pdf
-.Rproj.user
+*/*.pdf
+*/*.Rproj.user
+*/*.Rhistory
+*/*.RData
+
