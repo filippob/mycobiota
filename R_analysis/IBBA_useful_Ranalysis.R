@@ -424,5 +424,41 @@ p_phylum + ggtitle("Fungi Species composition (> 1%)")
 
 ggsave("Species_composition.pdf",device = "pdf")
 
+##############################
+## R1 and R2 comparison  #####
+##############################
 
+sample_names(physeq = phylo_obj_css_R1)
+sample_names(physeq = phylo_obj_css_R2)
+
+# make the names equal
+
+phylo_obj_css_R1_rename <- phylo_obj_css_R1
+phylo_obj_css_R2_rename <- phylo_obj_css_R2
+
+sample_names(physeq = phylo_obj_css_R1_rename) <- gsub("_R1","",sample_names(physeq = phylo_obj_css_R1_rename))
+sample_names(physeq = phylo_obj_css_R2_rename) <- gsub("_R2","",sample_names(physeq = phylo_obj_css_R2_rename))
+
+summary(sample_names(phylo_obj_css_R1_rename) %in% sample_names(phylo_obj_css_R2_rename))
+
+# calculate distances
+R1.distance <- phyloseq::distance(phylo_obj_css_R1_rename, "bray")
+R2.distance <- phyloseq::distance(phylo_obj_css_R2_rename, "bray")
+
+# test with Mantel
+set.seed(672865)
+mantel(xdis = R1.distance, ydis = R2.distance, method = "pearson", permutations = 999) 
+set.seed(672865)
+mantel(xdis = R1.distance, ydis = R2.distance, method = "spearman", permutations = 999)
+
+# visualize procrustes rotation
+mds.R1 <- monoMDS(dist = R1.distance)
+mds.R2 <- monoMDS(dist = R2.distance)
+set.seed(9528)
+proc_R1.R2 <- procrustes(mds.R1, mds.R2, permutation = 999, symmetric = T)
+proc_R1.R2
+summary(proc_R1.R2)
+plot(proc_R1.R2, to.target = T)
+set.seed(9528)
+protest(mds.R1, mds.R2, permutation = 999)
 
