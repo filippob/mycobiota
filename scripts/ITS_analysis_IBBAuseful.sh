@@ -308,9 +308,13 @@ pandaseq -f merged_R1_renamed.fastq\
          -w output_concat.fastq\
          -U output_unaligned.fastq -B -T 4
 
-# nok, file "output_unalignes.fasta"
+# ok, file "output_unalignes.fasta"
+
+# Before BLAST, should select only the sequences that were used to build an OTU. Can use grep, one liner solution did not work, using a while read do loop
 
 
-
-
+while read seq
+do
+	grep -A 1 $seq output_unaligned.fasta >> grep_selected_seqs.fasta
+done < outids.txt
 
