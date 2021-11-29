@@ -318,3 +318,18 @@ do
 	grep -A 1 $seq output_unaligned.fasta >> grep_selected_seqs.fasta
 done < outids.txt
 
+ grep ">" grep_selected_seqs.fasta | wc -l
+
+ # found only 66 sequence in the concatenated file (out of 246 OTUs): PANDASEQ has lost some sequences! Why?? maybe some default param of quality or lenght or similar
+ # should try to do it manually with grep and while read do, so I am sure
+
+
+while read seq
+do
+#1 take sequence of forward
+#2 take sequence of reverse 
+#3 concatenate the two sequence
+# 4write 
+done < outids.txt
+
+
