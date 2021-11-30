@@ -323,13 +323,32 @@ done < outids.txt
  # found only 66 sequence in the concatenated file (out of 246 OTUs): PANDASEQ has lost some sequences! Why?? maybe some default param of quality or lenght or similar
  # should try to do it manually with grep and while read do, so I am sure
 
+# convert to fasta to have less lines
+sed -n '1~4s/^@/>/p;2~4p' merged_R1_renamed.fastq >  merged_R1_renamed.fasta
+sed -n '1~4s/^@/>/p;2~4p' merged_R2_renamed.fastq >  merged_R2_renamed.fasta
 
+# obtain RC of R2
+/home/fvitali/Documenti/Personal_PATH_folder/seqtk/seqtk seq -r merged_R2_renamed.fasta > merged_R2_renamed_RC.fasta
+
+#need to remove las :*** from otuids, number 8
+
+while read ids
+do 
+echo "$ids" | cut -d ":" -f1,2,3,4,5,6,7 >> otuids_renamed.txt
+done < otuids.txt
+
+# loop to concatenate
 while read seq
 do
-#1 take sequence of forward
-#2 take sequence of reverse 
-#3 concatenate the two sequence
-# 4write 
-done < outids.txt
+	R1=$(grep -A 1 "$seq" merged_R1_renamed.fasta | sed "1 d")
+	#echo $R1
+	R2=$(grep -A 1 "$seq" merged_R2_renamed_RC.fasta | sed "1 d") 
+	#echo $R2
+	concat="$R1"-"$R2" 
+	echo ">""$seq" >> output.fasta
+	echo $concat >> output.fasta
+	#write 
+done < otuids_renamed.txt
 
-
+grep ">" output.fasta | wc -l
+#246 !
