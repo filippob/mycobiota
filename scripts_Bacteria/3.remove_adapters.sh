@@ -18,8 +18,8 @@ if [ ! -d "${outdir}/trimmed" ]; then
 	mkdir -p ${outdir}/trimmed
 fi
 
-if [ ! -d "${outdir}/micca_its" ]; then
-	mkdir -p ${outdir}/micca_its
+if [ ! -d "${outdir}/micca_16S" ]; then
+	mkdir -p ${outdir}/micca_16S
 fi
 
 if [ ! -d "${outdir}/quality_control" ]; then
