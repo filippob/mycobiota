@@ -31,7 +31,7 @@ rm ./*singles.gz
 gunzip *.fastq.gz
 
 ## SINGULARITY CONTAINER ##
-singularity run $currpath/micca.sif micca mergepairs -i $currpath/${outdir}/trimmed/*_R1.fastq -o $currpath/${outdir}/micca_its/WP1_assembled_16S.fastq -l 32 -d 8 -t 7
+singularity run $currpath/micca.sif micca mergepairs -i $currpath/${outdir}/trimmed/*_R1.fastq -o $currpath/${outdir}/micca_16S/WP1_assembled_16S.fastq -l 32 -d 8 -t 7
 
 # -l : minimum overlap between reads
 # -d : maximum mismatch in overlap region
