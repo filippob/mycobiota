@@ -1,15 +1,16 @@
 ## setting the enviornmnent
 currpath=$(pwd)
-datapath="/home/ngs/210915_M04028_0141_000000000-JY8M4/"
+datapath="/home/ngs/200206_M04028_0114_000000000-CWB58/"
+outdir="Analysis/bacteria"
 core=8
 
-if [ ! -d "Analysis/micca_its" ]; then
-	mkdir Analysis/micca_its
+if [ ! -d "Analysis/${outdir}/micca_16S" ]; then
+	mkdir Analysis/${outdir}/micca_16S
 fi
 
 
 # Count trimmed data
-cd $currpath/Analysis/trimmed
+cd $currpath/${outdir}/trimmed
 
 for i in *.fastq.gz
 do
@@ -21,7 +22,7 @@ done
 
 ## Join reads (MICCA)
 
-cd $currpath/Analysis/trimmed
+cd $currpath/${outdir}/trimmed
 
 # remove singles reads from sickle
 
@@ -30,14 +31,14 @@ rm ./*singles.gz
 gunzip *.fastq.gz
 
 ## SINGULARITY CONTAINER ##
-singularity run $currpath/micca.sif micca mergepairs -i $currpath/Analysis/trimmed/*_R1.fastq -o $currpath/Analysis/micca_its/WP1_assembled_ITS.fastq -l 32 -d 8 -t 7
+singularity run $currpath/micca.sif micca mergepairs -i $currpath/${outdir}/trimmed/*_R1.fastq -o $currpath/${outdir}/micca_its/WP1_assembled_16S.fastq -l 32 -d 8 -t 7
 
 # -l : minimum overlap between reads
 # -d : maximum mismatch in overlap region
 
 # Counting reads in assembled file
 
-grep -c '^@M' $currpath/Analysis/micca_its/WP1_assembled_ITS.fastq
+grep -c '^@M' $currpath/${outdir}/micca_16S/WP1_assembled_16S.fastq
 
 # 11534421. Total sum of trimmed reads = 26670364; Teoric 100% assembly = 26670364/2 = 13335182
 # Read loss from QC reads to assembled = 13335182 - 11534421 = 1800761;
@@ -45,7 +46,7 @@ grep -c '^@M' $currpath/Analysis/micca_its/WP1_assembled_ITS.fastq
 
 # zipping back trimmed files
 
-cd $currpath/Analysis/trimmed
+cd $currpath/${outdir}/trimmed
 
 gzip *.fastq
 
