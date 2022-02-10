@@ -1,4 +1,8 @@
-## setting the enviornmnent
+#################################################
+## Script to rename samples and count input reads
+#################################################
+
+## setting the environmnent
 currpath=$(pwd)
 datapath="/home/ngs/200206_M04028_0114_000000000-CWB58/"
 outdir="Analysis/bacteria/renamed"
